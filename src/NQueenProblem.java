@@ -77,29 +77,30 @@ public class NQueenProblem {
                 // Rekursiver Aufruf um den Rest der Damen zu platzieren
                 if (solve(schachbrett, col + 1)) {
 
-                    //PrintWriter -- ANFANG
-                    PrintWriter out = new PrintWriter(new FileOutputStream(
-                            new File("output.txt"),
-                            true /* append = true */));
-
-                    String stringForFileOutput = "";
-                    for (int x = 0; x < schachbrett.length; x++) {
-                        for (int j = 0; j < schachbrett.length; j++) {
-                            stringForFileOutput+= " " + schachbrett[x][j] + " ";
-                        }
-                        stringForFileOutput+= "\n";
-                    }
-                    out.append(stringForFileOutput.replace('0', '_').replace('1', 'D'));
-                    out.append("\n");
-                    out.append("\n");
-                    out.close();
-                    //PrintWriter -- ENDE
 
                     return true;}
 
-                // Wenn die Platzierung auf schachbrett[i][col] nicht zu einem Ergebniss kommt, dann entferne die Dame wieder von
+                // Wenn die Platzierung auf schachbrett[i][col] nicht zu einem Ergebnis kommt, dann entferne die Dame wieder von
                 // schachbrett[i][col]
                 schachbrett[i][col] = 0; // BACKTRACK
+
+                //PrintWriter -- ANFANG
+                PrintWriter out = new PrintWriter(new FileOutputStream(
+                        new File("output.txt"),
+                        true /* append = true */));
+
+                String stringForFileOutput = "";
+                for (int x = 0; x < schachbrett.length; x++) {
+                    for (int j = 0; j < schachbrett.length; j++) {
+                        stringForFileOutput+= " " + schachbrett[x][j] + " ";
+                    }
+                    stringForFileOutput+= "\n";
+                }
+                out.append(stringForFileOutput.replace('0', '_').replace('1', 'D'));
+                out.append("\n");
+                out.append("\n");
+                out.close();
+                //PrintWriter -- ENDE
 
             }
 
